@@ -50,13 +50,18 @@ for (let row = 0; row < ROWS; row++) {
 
 // 카드 그리기 예시
 function drawCards() {
+    // 캔버스 전체 지우기
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     cards.forEach(card => {
         const x = START + card.col * (CARD_SIZE + PADDING);
         const y = START + card.row * (CARD_SIZE + PADDING);
         let img;
         if (!card.close) {
+            // 열린 상태면 카드 앞면만 그림
             img = getCardFaceImage(card.number);
         } else {
+            // 닫힌 상태면 카드 뒷면(check.png)만 그림
             img = new Image();
             img.src = cardBackSrc;
         }
