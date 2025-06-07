@@ -8,19 +8,14 @@ const CARD_SIZE = Math.floor((canvas.width - PADDING * (COLS + 1)) / COLS);
 const START = PADDING;
 
 const cardBackSrc = 'img/check.png';
-// 카드 페이스 이미지를 직접 두 번씩 배열에 넣음
 
-// 카드가 필요한 순간에 직접 파일 이름을 사용하세요.
-// 예시: 카드 번호가 1~8일 때
+
 function getCardFaceImage(cardNumber) {
     const img = new Image();
     img.src = `img/${cardNumber}.png`;
     return img;
 }
 
-// 사용 예시:
-// let cardImg = getCardFaceImage(3); // 3번 카드 이미지 객체
-// ctx.drawImage(cardImg, x, y, width, height);
 
 // 1~8.png를 각각 두 번씩 사용하여 카드 배열 생성
 let cardNumbers = [];
@@ -43,7 +38,7 @@ for (let row = 0; row < ROWS; row++) {
             row,
             col,
             number: cardNumbers[idx++],
-            close: true // 처음에는 모두 닫힘(뒤집힘)
+            close: true // 처음에는 모두 닫힘
         });
     }
 }
@@ -120,8 +115,9 @@ canvas.addEventListener('click', function(e) {
                     // 게임 클리어 체크
                     if (cards.every(c => !c.close)) {
                         setTimeout(() => {
-                            alert('게임 클리어!');
-                        }, 100);
+                            // alert('게임 클리어!');
+                            window.location.href = 'clear.html';
+                        }, 2000);
                     }
                 }, 800);
             }
@@ -130,5 +126,4 @@ canvas.addEventListener('click', function(e) {
     }
 });
 
-// drawCards(); // 필요할 때 호출
 
