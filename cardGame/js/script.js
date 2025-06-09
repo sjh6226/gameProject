@@ -69,6 +69,9 @@ function drawCards() {
     });
 }
 
+// 카드 배열 생성 후, 시작 시 모든 카드가 닫혀있는 상태로 보이도록 그림
+drawCards();
+
 let firstCard = null;
 let secondCard = null;
 let lock = false; // 애니메이션 중 클릭 방지
