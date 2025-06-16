@@ -1,9 +1,12 @@
+// CardGame.js: 카드 게임의 전체 로직(초기화, 클릭 처리, 게임 상태 관리 등)을 담당하는 클래스 제공
+
 import { Card } from './Card.js';
 import { drawCards } from './drawCards.js';
 import { initCards } from './initCards.js';
 
 export class CardGame {
     constructor(canvas, ctx, rows, cols, padding) {
+        // 게임판 설정 및 카드 초기화
         this.canvas = canvas;
         this.ctx = ctx;
         this.ROWS = rows;
@@ -18,11 +21,13 @@ export class CardGame {
         this.secondCard = null;
         this.lock = false;
 
+        // 카드 생성 및 초기 그리기
         initCards(this, Card, this.ROWS, this.COLS);
         drawCards(this.ctx, this.cards, this.CARD_SIZE, this.PADDING, this.START, this.cardBackSrc);
         this.canvas.addEventListener('click', this.handleClick.bind(this));
     }
 
+    // 카드 클릭 이벤트 처리
     handleClick(e) {
         if (this.lock) return;
         const rect = this.canvas.getBoundingClientRect();

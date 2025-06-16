@@ -1,3 +1,5 @@
+// 4k.js: 4키 리듬 게임의 전체 동작(노트 생성, 판정, 점수, 타이머 등)을 담당하는 클래스 및 실행 코드
+
 class RhythmGame {
     constructor() {
         this.gameArea = document.getElementById("gameArea");
@@ -21,6 +23,7 @@ class RhythmGame {
         this.bindEvents();
     }
 
+    // 이벤트 바인딩(속도 조절, 키 입력 등)
     bindEvents() {
         this.increaseSpeedButton.addEventListener("click", () => {
             this.speed = Math.min(this.speed + 1, 50);
@@ -35,6 +38,7 @@ class RhythmGame {
         document.addEventListener("keypress", (event) => this.handleKeyPress(event));
     }
 
+    // 노트 생성 및 애니메이션
     createNote() {
         if (!this.gameActive) return;
         const randomKey = this.keys[Math.floor(Math.random() * this.keys.length)];
@@ -65,6 +69,7 @@ class RhythmGame {
         note._interval = interval;
     }
 
+    // 게임 시작(노트 생성 타이머 시작)
     startGame() {
         clearInterval(this.noteInterval);
         this.noteInterval = setInterval(() => {
@@ -72,6 +77,7 @@ class RhythmGame {
         }, 800 / (this.speed / 25));
     }
 
+    // 키 입력 판정 및 점수/콤보 처리
     handleKeyPress(event) {
         if (!this.gameActive) return;
         const notes = document.querySelectorAll(".note");
@@ -98,6 +104,7 @@ class RhythmGame {
         });
     }
 
+    // 타이머 UI 갱신
     updateTimer() {
         if (this.timerDisplay) {
             const min = Math.floor(this.timeLeft / 60);
@@ -106,6 +113,7 @@ class RhythmGame {
         }
     }
 
+    // 게임 전체 초기화 및 시작
     gameStart() {
         this.combo = 0;
         this.score = 0;

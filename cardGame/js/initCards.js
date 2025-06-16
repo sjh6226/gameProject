@@ -1,3 +1,6 @@
+// initCards.js: 카드 게임의 카드 배열을 초기화(짝 맞추기용 번호 섞기 및 배치)하는 함수 제공
+
+// initCards: 게임 인스턴스에 카드 객체들을 생성하고 섞어서 배치
 export function initCards(gameInstance, CardClass, rows, cols) {
     let cardNumbers = [];
     const pairCount = (rows * cols) / 2;

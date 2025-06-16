@@ -1,3 +1,5 @@
+// script.js: 카드 게임 실행을 위한 초기 설정 및 CardGame 인스턴스 생성
+
 import { CardGame } from './CardGame.js';
 import { DEFAULT_ROWS, DEFAULT_COLS, DEFAULT_PADDING } from './constants.js';
 

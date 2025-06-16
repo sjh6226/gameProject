@@ -1,5 +1,8 @@
+// handleCardClick.js: 카드 클릭 이벤트를 처리하는 함수 제공
+
 import { drawCards } from './drawCards.js';
 
+// handleCardClick: 클릭된 카드의 상태를 변경하고, 게임 로직(짝 맞추기, 잠금, 클리어 판정 등)을 처리
 export function handleCardClick(gameInstance, e) {
     if (gameInstance.lock) return;
     const rect = gameInstance.canvas.getBoundingClientRect();
